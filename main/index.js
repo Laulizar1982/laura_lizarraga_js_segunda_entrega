@@ -17,16 +17,18 @@ const antares = {
     threadhold: 2
 };
 
-const customerName = completeName() 
+const customerName = completeName();
 
-function completeName() {
-    let customerName = prompt("Bienvenido a Tuscervezas.com! Cual es su nombre?")
+ function completeName() {
+  let customerName = prompt("Bienvenido a Tuscervezas.com! Cual es su nombre?")
     console.log(`validacion > ${customerName.trim().length == 0}`)
-     while(customerName.trim().length == 0) {
-        completeName()
-    } 
-    return customerName
-}
+   while(customerName.trim() == "") {
+       customerName = prompt ('Debe ingresar su nombre para poder avanzar')
+   } 
+  return customerName
+ }
+
+
 
 let selectedOption = parseInt(
     prompt(
@@ -120,7 +122,7 @@ function subscribeFlow() {
 }
 
 function showError() {
-    alert("lo siento, solo contamos las opciones que mostramos en pantalla") ;
+    alert("lo siento, la opción ingresada no se encuentra disponible") ;
     showExitMessage();
 }
 
