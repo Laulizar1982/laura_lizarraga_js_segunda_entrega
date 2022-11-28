@@ -4,30 +4,33 @@ const contenedorProductos = document.getElementById('contenedor-productos');
 const botonesCategorias = document.querySelectorAll (".boton-categoria");
 contenedorProductos.innerHTML= "";
 
-StockProductos.forEach((producto) => {
-    const div = document.createElement('div')
-    div.classList.add('producto')
-    div.innerHTML = `
-    <img src=${producto.img} alt= "">
-    <h4>${producto.nombre}</h4>
-    <p>${producto.descripcion}</p>
-    <p>${producto.categoria}</p>
-    <p class="precioProducto">Precio:$ ${producto.precio}</p>
-    <button id="comprar${producto.id}" class="boton-comprar">Comprar <i class="fas fa-shopping-cart"></i></button>
+showProducts(StockProductos);
 
-    `
-    contenedorProductos.appendChild(div)
-
-    const boton = document.getElementById(`comprar${producto.id}`)
-    //Por cada elemento de mi array, se crea un div, cada uno tiene un id particular, para poder hacer
-    // get element by id (el de comprar) Obtengo el elemento y a dicho elemento le agregamos
-    //el evento add event listener para que pueda llamarlo.
-
-    boton.addEventListener('click', () => {
-        agregarAlCarrito(producto.id)
+function showProducts(products) {
+    contenedorProductos.innerHTML= "";
+    products.forEach((producto) => {
+        const div = document.createElement('div')
+        div.classList.add('producto')
+        div.innerHTML = `
+        <img src=${producto.img} alt= "">
+        <h4>${producto.nombre}</h4>
+        <p>${producto.descripcion}</p>
+        <p>${producto.categoria}</p>
+        <p class="precioProducto">Precio:$ ${producto.precio}</p>
+        <button id="comprar${producto.id}" class="boton-comprar">Comprar <i class="fas fa-shopping-cart"></i></button>   
+        `
+        contenedorProductos.appendChild(div);
+    
+        const boton = document.getElementById(`comprar${producto.id}`)
+        //Por cada elemento de mi array, se crea un div, cada uno tiene un id particular, para poder hacer
+        // get element by id (el de comprar) Obtengo el elemento y a dicho elemento le agregamos
+        //el evento add event listener para que pueda llamarlo.
+    
+        boton.addEventListener('click', () => {
+            agregarAlCarrito(producto.id)
+        })
     })
-})
-
+} 
 
 const contenedorCarrito = document.getElementById('carrito-contenedor')
 
@@ -130,6 +133,8 @@ const actualizarCarrito = () => {
     //empezando en 0.   
 }
 cargarProductos(StockProductos);
+
+
 
 botonesCategorias.forEach(boton => {
     boton.addEventListener("click", (e) => {
