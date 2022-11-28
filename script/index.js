@@ -2,6 +2,7 @@
 //VARIABLES 
 const contenedorProductos = document.getElementById('contenedor-productos');
 const botonesCategorias = document.querySelectorAll (".boton-categoria");
+
 contenedorProductos.innerHTML= "";
 
 showProducts(StockProductos);
@@ -31,6 +32,28 @@ function showProducts(products) {
         })
     })
 } 
+
+const btnTodos = document.getElementById('todos');
+const btnMesas = document.getElementById('mesa');
+const btnSillas = document.getElementById('silla');
+const btnSillones = document.getElementById('sillon');
+
+btnTodos.addEventListener('click', () => {
+    showProducts(StockProductos);
+});
+
+btnMesas.addEventListener('click', () => {
+    showProducts( StockProductos.filter(producto => producto.categoria == "mesa"))
+});
+
+btnSillas.addEventListener('click', () => {
+    showProducts( StockProductos.filter(producto => producto.categoria == "silla"))
+});
+
+btnSillones.addEventListener('click', () => {
+    showProducts( StockProductos.filter(producto => producto.categoria == "sillon"))
+});
+
 
 const contenedorCarrito = document.getElementById('carrito-contenedor')
 
@@ -132,24 +155,3 @@ const actualizarCarrito = () => {
     //Por cada producto q recorro de mi carrito, al acumulador le suma la propiedad precio, con el acumulador
     //empezando en 0.   
 }
-cargarProductos(StockProductos);
-
-
-
-botonesCategorias.forEach(boton => {
-    boton.addEventListener("click", (e) => {
-
-        botonesCategorias.forEach(boton => boton.classList.remove("active"));
-        e.currentTarget.classList.add("active");
-
-        if (e.currentTarget.id != "todos") {
-            const productosBoton = StockProductos.filter(producto => producto.categoria.id === e.currentTarget.id);
-            cargarProductos(productosBoton);
-        } else {
-            tituloPrincipal.innerText = "Todos los productos";
-            cargarProductos(productos);
-        }
-
-    })
-});
-
