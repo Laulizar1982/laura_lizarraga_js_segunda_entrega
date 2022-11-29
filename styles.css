@@ -38,7 +38,7 @@ h4{
 .contenedor{
     display: grid;
     grid-template-columns: 1fr 4fr;
-    background-color: #ececec;
+    background-color: white;
 }
 aside{
     padding: 2rem;
@@ -58,7 +58,7 @@ aside{
 }
 
 .boton-menu {
-    background-color: transparent;
+    background-color:lightgray;
     border: 0;
     color: rebeccapurple;
     cursor: pointer;
@@ -71,8 +71,7 @@ aside{
     width: 100%;
 }
 .boton-menu.active {
-    background-color: var(--clr-white);
-    color: var(--clr-main);
+    background-color:lightgray;
     border-top-left-radius: 1rem;
     border-bottom-left-radius: 1rem;
     position: relative;
@@ -87,7 +86,6 @@ aside{
     right: 0;
     background-color: transparent;
     border-bottom-right-radius: .5rem;
-    box-shadow: 0 1rem 0 var(--clr-white);
 }
 
 .boton-menu.active::after {
@@ -99,7 +97,7 @@ aside{
     right: 0;
     background-color: transparent;
     border-top-right-radius: .5rem;
-    box-shadow: 0 -1rem 0 var(--clr-white);
+    
 }
 
 .boton-menu > i.bi-hand-index-thumb-fill,
@@ -107,22 +105,17 @@ aside{
     transform: rotateZ(90deg);
 }
 
-.boton-carrito {
+#boton-carrito {
     margin-top: 2rem;
+    font-size: 40px;
 }
 
-.numerito {
-    background-color: var(--clr-white);
-    color: var(--clr-main);
+#numerito {
+    background-color:transparent;
     padding: .15rem .25rem;
     border-radius: .25rem;
+    font-size: 40px;
 }
-
-.boton-carrito.active .numerito {
-    background-color: var(--clr-main);
-    color: var(--clr-white);
-}
-
 
 #contenedor-productos {
     max-width: 1200px;
